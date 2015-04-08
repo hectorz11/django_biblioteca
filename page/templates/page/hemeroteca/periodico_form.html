@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<table class="table table-striped">
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_volumen">Volumen: </label>
+				{{ form.volumen }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_nombre">Nombre: </label>
+				{{ form.nombre }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_fecha_inicio">Fecha de Inicio: </label>
+				{{ form.fecha_inicio }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_fecha_fin">Fecha de Termino: </label>
+				{{ form.fecha_fin }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_estado">Estado del Material:</label>
+				{{ form.estado }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_clasificacion">Clasificacion del Material: </label>
+				{{ form.clasificacion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_tipo_periodico">Tipo de Periodico: </label>
+				{{ form.tipo_periodico }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_ubicacion">Ubicacion: </label>
+				{{ form.ubicacion }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_descripcion">Descripcion: </label>
+				{{ form.descripcion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_observaciones">Observaciones :</label>
+				{{ form.observaciones }}
+			</div></td>
+		</tr>
+		</table>
+	    <input class="btn btn-large btn-primary" type="submit" value="Ingresar Libro" />
+	    <a href="{% url 'page:index' %}" class="btn btn-large btn-danger">Cancelar</a>
+	</form>
+</div>
+{% endblock %}

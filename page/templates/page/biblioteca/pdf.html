@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<table class="table" border="1" align="center">
+    <tr>
+        <td width=5%><b>ID. Reg.</b></td>
+        <td widht=5%><b>Codigo</b></td>
+        <td width=26%><b>Autor(es)</b></td>
+        <td width=40%><b>Titulo del Libro</b></td>
+        <td width=6%><b>Edicion</b></td>
+        <td width=6%><b>Estado</b></td>
+        <td width=6%><b>Editar</b></td>
+        <td width=6%><b>Borrar</b></td>
+    </tr>    
+    {% for libro in libros %}
+    <tr>
+        <td>{{ libro.id }}</td>
+        <td>{{ libro.codigo }}</td>
+        <td>{{ libro.autores }}</td>
+        <td>{{ libro.titulo }}</td>
+        <td>{{ libro.edicion }}</td>
+        <td>{{ libro.estado }}</td>
+        <td><a href="{% url 'page:libro_update' libro.id %}" class='btn btn-mini tn btn-warning'><i class='icon-edit icon-white'></i> Editar</a></td>
+        <td><a href="{% url 'page:libro_delete' libro.id %}" class='btn btn-mini tn btn-danger'><i class='icon-remove icon-white'></i> Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<script>$("tr:odd").css("background-color", "#bbbbff");</script>
+
+<div class="form-actions" align="center">
+    <a href="{% url 'page:libro_create'%}" class="btn btn-large btn-primary" name="ingresar"></i> Ingresar Nuevo Registro</a> 
+    <a href="{% url 'page:index' %}" class="btn btn-large tn btn-danger"><i class="icon-home icon-white"></i> Regresar al Menu Principal</a>
+</div>
+{% endblock %}

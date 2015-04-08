@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<table class="table table-striped">
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_codigo">Codigo: </label>
+				{{ form.codigo }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_autores">Autores: </label>
+				{{ form.autores }}
+			</div></td>
+			<td><div class="text-xlarge" id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_titulo">Titulo :</label>
+				{{ form.titulo }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_edicion">Edicion: </label>
+				{{ form.edicion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_anio">Año: </label>
+				{{ form.anio }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_fotoportada">Foto Portada: </label>
+				{{ form.fotoportada }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_ubicacion">Ubicacion: </label>
+				{{ form.ubicacion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_estado">Estado :</label>
+				{{ form.estado }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_clasificacion">Clasificacion: </label>
+				{{ form.clasificacion }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_contenido">Contenido :</label>
+				{{ form.contenido }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_descripcion">Descripcion: </label>
+				{{ form.descripcion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_observaciones">Observaciones :</label>
+				{{ form.observaciones }}
+			</div></td>
+		</tr>
+		</table>
+	    <input class="btn btn-large btn-primary" type="submit" value="Confirmar" />
+	    <a href="{% url 'page:index' %}" class="btn btn-large btn-danger">Cancelar</a>
+	</form>
+</div>
+{% endblock %}

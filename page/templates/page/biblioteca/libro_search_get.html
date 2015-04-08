@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="hero-unit">
+<h1><center>¿Qué desea buscar?</center></h1><br><br>
+	<center>
+        <div class="input-prepend input-append" align="center">
+            <div class="busqueda">
+            <form class="navbar-search pull-left" method="POST" action="{% url 'page:libro_buscar' %}"> {% csrf_token %}
+            	<select name="opcion">
+	                <option value="1">Codigo</option>
+	                <option value="2">Autor</option>
+	                <option value="3">Titulo del Libro</option>
+            	</select>
+                <input type="text" name="buscalo" class="search-query" placeholder="Buscar">
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                </div>
+            </form>
+            </div>
+    	</div><br><br>
+	    <a href="{% url 'page:index' %}" type="button" class="btn btn-large tn btn-danger"><i class='icon-home icon-white'></i> Regresar al Menú Principal</a> 
+	</center> 
+</div>
+{% endblock %}
