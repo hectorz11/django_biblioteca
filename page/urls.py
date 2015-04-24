@@ -22,10 +22,10 @@ urlpatterns = patterns('',
 	url(r'libro/delete/(?P<pk>\d+)/$', views.LibroDelete.as_view(), name='libro_delete'),
 	url(r'periodico/delete/(?P<pk>\d+)/$', views.PeriodicoDelete.as_view(), name='periodico_delete'),
 
-	url(r'libro/buscar/$', views.LibroBuscar.as_view(), name='libro_buscar'),
 	url(r'libro/search/$', views.LibroSearch.as_view(), name='libro_search'),
-	url(r'periodico/buscar/$', views.PeriodicoBuscar.as_view(), name='periodico_buscar'),
+	url(r'libro/view/$', views.LibroView.as_view(), name='libro_view'),
 	url(r'periodico/search/$', views.PeriodicoSearch.as_view(), name='periodico_search'),
+	url(r'periodico/view/$', views.PeriodicoView.as_view(), name='periodico_view'),
 
 	url(r'^topdf/$', views.to_pdf, name='to_pdf'),
 )

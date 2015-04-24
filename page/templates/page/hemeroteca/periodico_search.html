@@ -1,53 +1,24 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-<center>
-    <div class="input-prepend input-append" align="center">
+<div class="hero-unit">
+    <h1><center>¿Qué desea buscar?</center></h1><br><br>
+	<center>
         <div class="input-prepend input-append" align="center">
-            <form class="navbar-search pull-left" method="POST" action="{% url 'page:periodico_buscar' %}"> {% csrf_token %}
-                <select name="opcion">
-                    <option value="1">Volumen</option>
-                    <option value="2">Nombre del Ejemplar</option>
-                </select>
+            <div class="busqueda">
+            <form class="navbar-search pull-left" method="POST" action="{% url 'page:periodico_view' %}"> {% csrf_token %}
+            	<select name="opcion">
+	                <option value="1">Volumen</option>
+	                <option value="2">Nombre del Ejemplar</option>
+            	</select>
                 <input type="text" name="buscalo" class="search-query" placeholder="Buscar">
                 <div class="btn-group">
-                        <button class="btn btn-primary" type="submit"><i class="icon-white icon-search"></i></button>
+                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
                 </div>
             </form>
-        </div>
-    </div>
-</center>
-
-<table class="table table-striped" border="1" align="center">
-    <tr>
-        <td><b>ID. Reg.</b></td>
-        <td><b>Volumen</b></td>
-        <td><b>Nombre de Ejemplar</b></td>
-        <td><b>Fecha de Inicio</b></td>
-        <td><b>FEcha de Termino</b></td>
-        <td><b>Estado</b></td>
-        <td><b>Editar</b></td>
-        <td><b>Borrar</b></td>
-    </tr>
-{% if periodico %}
-	{% for periodico in periodicos %}
-	<tr>
-        <td>{{ periodico.id }}</td>
-        <td>{{ periodico.volumen }}</td>
-        <td>{{ periodico.nombre }}</td>
-        <td>{{ periodico.fecha_inicio }}</td>
-        <td>{{ periodico.fecha_fin }}</td>
-        <td>{{ periodico.estado }}</td>
-        <td><a href="{% url 'page:periodico_update' periodico.id %}" class='btn btn-mini tn btn-warning'><i class='icon-edit icon-white'></i> Editar</a></td>
-        <td><a href="{% url 'page:periodico_delete' periodico.id %}" class='btn btn-mini tn btn-danger'><i class='icon-remove icon-white'></i> Eliminar</a></td>
-     </tr>
-	{% endfor %}
-{% endif %}
-</table>
-<script>$("tr:odd").css("background-color", "#bbbbff");</script>
-
-<div class="form-actions" align="center">
-    <a href="{% url 'page:periodico_create'%}" class="btn btn-large btn-primary" name="ingresar"></i> Ingresar Nuevo Registro</a> 
-    <a href="{% url 'page:index' %}" class="btn btn-large tn btn-danger"><i class="icon-home icon-white"></i> Regresar al Menu Principal</a>
+            </div>
+    	</div><br><br>
+	    <a href="{% url 'page:index' %}" type="button" class="btn btn-large tn btn-danger"><i class='icon-home icon-white'></i> Regresar al Menú Principal</a>
+	</center> 
 </div>
 {% endblock %}

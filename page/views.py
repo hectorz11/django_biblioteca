@@ -82,7 +82,7 @@ class PeriodicoDelete(generic.DeleteView):
 	template_name 	= 'page/hemeroteca/periodico_delete.html'
 	success_url 	= reverse_lazy('page:periodico_delete')
 
-class LibroBuscar(generic.TemplateView):
+class LibroView(generic.TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		buscar = request.POST['buscalo']
@@ -90,19 +90,19 @@ class LibroBuscar(generic.TemplateView):
 		if opcion == '1':
 			libros = Libro.objects.filter(codigo__contains=buscar)
 			contexto = {'libros':libros,'libro':True}
-			return render(request,'page/biblioteca/libro_search.html',contexto)
+			return render(request,'page/biblioteca/libro_view.html',contexto)
 		if opcion == '2':
 			libros = Libro.objects.filter(autores__contains=buscar)
 			contexto = {'libros':libros,'libro':True}
-			return render(request,'page/biblioteca/libro_search.html',contexto)
+			return render(request,'page/biblioteca/libro_view.html',contexto)
 		if opcion == '3':
 			libros = Libro.objects.filter(titulo__contains=buscar)
 			contexto = {'libros':libros,'libro':True}
-			return render(request,'page/biblioteca/libro_search.html',contexto)
+			return render(request,'page/biblioteca/libro_view.html',contexto)
 		else:
-			return render(request,'page/biblioteca/libro_search.html')
+			return render(request,'page/biblioteca/libro_view.html')
 
-class PeriodicoBuscar(generic.TemplateView):
+class PeriodicoView(generic.TemplateView):
 
 	def post(self, request, *args, **kwargs):
 		buscar = request.POST['buscalo']
@@ -110,23 +110,23 @@ class PeriodicoBuscar(generic.TemplateView):
 		if opcion == '1':
 			periodicos = Periodico.objects.filter(volumen__contains=buscar)
 			contexto = {'periodicos':periodicos,'periodico':True}
-			return render(request,'page/hemeroteca/periodico_search.html',contexto)
+			return render(request,'page/hemeroteca/periodico_view.html',contexto)
 		if opcion == '2':
 			periodicos = Periodico.objects.filter(nombre__contains=buscar)
 			contexto = {'periodicos':periodicos,'periodico':True}
-			return render(request,'page/hemeroteca/periodico_search.html',contexto)
+			return render(request,'page/hemeroteca/periodico_view.html',contexto)
 		else:
-			return render(request,'page/hemeroteca/periodico_search.html')
+			return render(request,'page/hemeroteca/periodico_view.html')
 
 class LibroSearch(generic.View):
 
 	def get(self, request, *args, **kwargs):
-		return render(request,'page/biblioteca/libro_search_get.html')
+		return render(request,'page/biblioteca/libro_search.html')
 
 class PeriodicoSearch(generic.View):
 
 	def get(self, request, *args, **kwargs):
-		return render(request,'page/hemeroteca/periodico_search_get.html')
+		return render(request,'page/hemeroteca/periodico_search.html')
 
 def to_pdf(request):
 	libros = Libro.objects.all()

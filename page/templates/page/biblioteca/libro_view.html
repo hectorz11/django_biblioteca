@@ -19,7 +19,7 @@
     </div>
 </center>
 
-<table class="table" border="1" align="center">
+<table class="table table-striped" border="1" align="center">
     <tr>
         <td width=5%><b>ID. Reg.</b></td>
         <td widht=5%><b>Codigo</b></td>
@@ -29,9 +29,10 @@
         <td width=6%><b>Estado</b></td>
         <td width=6%><b>Editar</b></td>
         <td width=6%><b>Borrar</b></td>
-    </tr>    
-    {% for libro in libros %}
-    <tr>
+    </tr>
+{% if libro %}
+	{% for libro in libros %}
+	<tr>
         <td>{{ libro.id }}</td>
         <td>{{ libro.codigo }}</td>
         <td>{{ libro.autores }}</td>
@@ -40,24 +41,10 @@
         <td>{{ libro.estado }}</td>
         <td><a href="{% url 'page:libro_update' libro.id %}" class='btn btn-mini tn btn-warning'><i class='icon-edit icon-white'></i> Editar</a></td>
         <td><a href="{% url 'page:libro_delete' libro.id %}" class='btn btn-mini tn btn-danger'><i class='icon-remove icon-white'></i> Eliminar</a></td>
-    </tr>
-    {% endfor %}
+     </tr>
+	{% endfor %}
+{% endif %}
 </table>
-<div class="pagination">
-    <span class="step-links">
-        {% if libros.has_previous %}
-            <a href="?page={{ libros.previous_page_number }}">Previo</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ libros.number }} de {{ libros.paginator.num_pages }}.
-        </span>
-
-        {% if libros.has_next %}
-            <a href="?page={{ libros.next_page_number }}">Siguiente</a>
-        {% endif %}
-    </span>
-</div>
 <script>$("tr:odd").css("background-color", "#bbbbff");</script>
 
 <div class="form-actions" align="center">
